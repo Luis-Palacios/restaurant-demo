@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ckeditor',
 
     'menu',
+    'config',
 ]
 
 MIDDLEWARE = [
