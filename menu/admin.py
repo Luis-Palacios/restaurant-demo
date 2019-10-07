@@ -43,6 +43,8 @@ class MenuItemAdmin(admin.ModelAdmin):
     ordering = ['category__order',  'order', ]
     list_filter = ['active', 'category', 'tags']
     filter_horizontal = ['tags']
+    search_fields = ['name', 'category__name', 'tags__name']
+    list_per_page = 10
 
     def image_tag(self, obj):
         return format_html('<img src="{}" style="width:100px" />'.format(obj.image.url))

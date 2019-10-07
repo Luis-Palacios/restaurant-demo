@@ -46,11 +46,21 @@ def add_initial_data(apps, schema_editor):
         MenuTag(
             name='Healthy',
             icon='fas fa-heart'
+        ),
+        MenuTag(
+            name='House Specialty',
+            icon='fas fa-star'
         )
     ])
 
     starter_category = MenuCategory.objects.get(order=1)
+    shirmp_addiction_category = MenuCategory.objects.get(order=2)
+    drinks_category = MenuCategory.objects.get(order=3)
+
     shareable_tag = MenuTag.objects.get(name='Shareable')
+    spicey_tag = MenuTag.objects.get(name='Spicey')
+    healthy_tag = MenuTag.objects.get(name='Healthy')
+    house_specialty = MenuTag.objects.get(name='House Specialty')
 
     shrimp_nachos = MenuItem(
         name='Shrimp Nachos',
@@ -60,10 +70,209 @@ def add_initial_data(apps, schema_editor):
         description='Tortilla bathed with a mixture of Monterey cheeses, jack, mozzarella and cheddar, pico de gallo and fresh jalapenos and shrimp',
         price=24,
         category=starter_category,
-        
     )
     shrimp_nachos.save()
     shrimp_nachos.tags.set([shareable_tag])
+
+    hush_puppies = MenuItem(
+        name='Hush Puppies',
+        order=2,
+        image='items/hush-puppies.jpg',
+        active=True,
+        description='Fish, shrimp and golden corn croquettes with a touch of cajun, served with tartare sauce',
+        price=15.50,
+        category=starter_category,
+    )
+    hush_puppies.save()
+
+    captains_fish_chips = MenuItem(
+        name='Captain\'s fish and chips',
+        order=3,
+        image='items/captains-fish-chips.jpg',
+        active=True,
+        description='Fish fingers with our special breaded meat served in a bed of crispy fries and tartar sauce',
+        price=17.60,
+        category=starter_category,
+    )
+    captains_fish_chips.save()
+
+    shrimp_tacos = MenuItem(
+        name='Shrimp Tacos',
+        order=4,
+        image='items/shrimp-tacos.jpg',
+        active=True,
+        description='Corn tortilla tacos with sauteed shrimp, onion and chiltoma, served with slices and chipotle sauce',
+        price=19.50,
+        category=starter_category,
+    )
+    shrimp_tacos.save()
+
+    fish_tacos = MenuItem(
+        name='Fish Tacos',
+        order=5,
+        image='items/fish-tacos.jpg',
+        active=True,
+        description='Corn tortilla tacos with crispy breaded onion and chiltima fish, served with slices and chipotle sauce',
+        price=18,
+        category=starter_category,
+    )
+    fish_tacos.save()
+
+    fish_tacos = MenuItem(
+        name='Fish Tacos',
+        order=5,
+        image='items/fish-tacos.jpg',
+        active=True,
+        description='Corn tortilla tacos with crispy breaded onion and chiltima fish, served with slices and chipotle sauce',
+        price=18,
+        category=starter_category,
+    )
+    fish_tacos.save()
+
+    national_beer = MenuItem(
+        name='National Beer',
+        order=1,
+        image='items/national-beer.jpg',
+        active=True,
+        price=2.0,
+        category=drinks_category,
+    )
+    national_beer.save()
+
+    heineken = MenuItem(
+        name='Heineken',
+        order=2,
+        image='items/heineken.jpeg',
+        active=True,
+        price=2.35,
+        category=drinks_category,
+    )
+    heineken.save()
+
+    cadejo = MenuItem(
+        name='Cadejo',
+        order=3,
+        image='items/cadejo.jpeg',
+        active=True,
+        price=3.25,
+        category=drinks_category,
+    )
+    cadejo.save()
+
+    national_beer = MenuItem(
+        name='Lemonade',
+        order=4,
+        image='items/lemonade.jpg',
+        active=True,
+        price=1.65,
+        category=drinks_category,
+    )
+    national_beer.save()
+
+    heineken = MenuItem(
+        name='Orange juice',
+        order=5,
+        image='items/orange-juice.jpg',
+        active=True,
+        price=1.2,
+        category=drinks_category,
+    )
+    heineken.save()
+
+    cadejo = MenuItem(
+        name='Coke',
+        order=6,
+        image='items/coke.jpg',
+        active=True,
+        price=1,
+        category=drinks_category,
+    )
+    cadejo.save()
+
+    shrimp_heaven = MenuItem(
+        name='Shrimp Heaven',
+        order=1,
+        image='items/shrimp-heaven.jpg',
+        active=True,
+        description='Coconut shrimp, popcorn shrimp, honey cajun shrimps and hush puppies, served with 3 types of sauce and accompanied by french fries',
+        price=33.50,
+        category=shirmp_addiction_category,
+    )
+    shrimp_heaven.save()
+    shrimp_heaven.tags.set([shareable_tag])
+
+    coconut_shrimp = MenuItem(
+        name='Coconut Shrimp',
+        order=2,
+        image='items/coconut-shrimp.jpg',
+        active=True,
+        description='The favorite of many! Served with orange marmalade with cajun and french fries',
+        price=22,
+        category=shirmp_addiction_category,
+    )
+    coconut_shrimp.save()
+
+    net_catch = MenuItem(
+        name='Net catch',
+        order=3,
+        image='items/net-catch.jpg',
+        active=True,
+        description='Our best peel\'n eat shrimp, steamed with beer, yellow corn and potatoes with our secret sauce',
+        price=23,
+        category=shirmp_addiction_category,
+    )
+    net_catch.save()
+    net_catch.tags.set([spicey_tag, house_specialty])
+
+    christmas_shrimp = MenuItem(
+        name='Christmas Shrimp',
+        order=4,
+        image='items/christmas-shrimps.jpg',
+        active=True,
+        description='Shrimp sauteed in olive oil, dried chili, paprika and garlic. Served with french bread and parsley',
+        price=22,
+        category=shirmp_addiction_category,
+    )
+    christmas_shrimp.save()
+    christmas_shrimp.tags.set([spicey_tag, house_specialty])
+
+    gumbo = MenuItem(
+        name='Gumbo',
+        order=5,
+        image='items/gumbo.jpg',
+        active=True,
+        description='A classic Louisiana stew with sausage, chicken and shrimp. Served with rice on the center',
+        price=23,
+        category=shirmp_addiction_category,
+    )
+    gumbo.save()
+    gumbo.tags.set([spicey_tag, house_specialty])
+
+    quinoa_shrimp = MenuItem(
+        name='Quinoa Shrimp',
+        order=6,
+        image='items/quinoa-shrimp.jpg',
+        active=True,
+        description='Delicious quinoa sauteed with shrimp and vegetables, with a touch of white wine, curcuma and coriander, accompanied with lettuce',
+        price=23,
+        category=shirmp_addiction_category,
+    )
+    quinoa_shrimp.save()
+    quinoa_shrimp.tags.set([healthy_tag])
+
+    cajun_shrimp_pasta = MenuItem(
+        name='Cajun Shrimp Pasta',
+        order=7,
+        image='items/cajum-shrimp-pasta.jpg',
+        active=True,
+        description='Delicious pasta with a light white sauce, accompanied by crispy shrimp, cajun, Parmesan cheese and parsley, served with French bread',
+        price=23,
+        category=shirmp_addiction_category,
+    )
+    cajun_shrimp_pasta.save()
+    cajun_shrimp_pasta.tags.set([spicey_tag, house_specialty])
+
+
 
 class Migration(migrations.Migration):
 
