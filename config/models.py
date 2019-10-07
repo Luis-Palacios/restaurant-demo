@@ -2,8 +2,8 @@ from django.db import models
 
 class GeneralInfo(models.Model):
     name = models.CharField(max_length=250)
-    telephone = models.CharField(max_length=12)
-    address = models.TextField()
+    phone = models.CharField(max_length=12)
+    email = models.EmailField()
     logo = models.ImageField(upload_to='info/')
 
     class Meta:

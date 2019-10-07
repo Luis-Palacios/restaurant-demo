@@ -4,7 +4,7 @@ from .models import GeneralInfo
 
 @admin.register(GeneralInfo)
 class GeneralInfoAdmin(admin.ModelAdmin):
-    list_display = ['name', 'telephone']
+    list_display = ['name', 'phone']
 
 
     def has_add_permission(self, request):

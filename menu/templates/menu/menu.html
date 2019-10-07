@@ -1,19 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-      <!-- Required meta tags -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-      <title>Menu</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Menu</title>
+    <script src="https://kit.fontawesome.com/6274f95d8c.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <h1>{{general_info.name}}</h1>
+    <h1 class="text-center">{{general_info.name}}</h1>
+    <img src="{{general_info.logo.url}}" alt="restaurant-logo" class="img-thumbnail rounded mx-auto d-block">
+    <address class="text-center">
+        <a href="mailto:jim@rock.com">{{general_info.email}}</a><br>
+        <a href="tel:+13115552368">{{general_info.phone}}</a>
+    </address>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="list-inline float-right">
+                {% for menu_tag in menu_tags %}
+                    <li class="list-inline-item">
+                        {{menu_tag.name}} <i class="{{menu_tag.icon}}"></i>
+                    </li>   
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% for menu_category in menu_categories %}
+        <div class="row">
+            <div class="col-md-2">
+                <div class="card mb-3">
+                    <img src="{{menu_category.image.url}}" class="card-img-top"
+                        alt="{{menu_category.name}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{menu_category.name}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="card-columns">
+                    {% for menu_item in menu_category.menuitem_set.all %}
+                    <div class="card">
+                        <img src="{{menu_item.image.url}}" class="card-img-top" alt="{{menu_item.name}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{menu_item.name}}</h5>
+                            {% for tag in menu_item.tags.all %}
+                            <i class="{{tag.icon}}" title="{{tag.name}}"></i>
+                            {% endfor %}
+                            <p class="card-text">{{menu_item.description | safe}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Price: <strong>${{ menu_item.price }}</strong></small>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
     <ul>
         {% for menu_item in menu_items %}
         <li>{{menu_item.name}}</li>
         {% endfor%}
     </ul>
 </body>
+
 </html>
