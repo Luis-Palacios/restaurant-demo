@@ -20,7 +20,7 @@ class MenuCategoryAdmin(admin.ModelAdmin):
     list_filter = ['active']
 
     def image_tag(self, obj):
-        return format_html('<img src="{}" style="width:150px" />'.format(obj.image.url))
+        return format_html('<img src="{}" style="width:85px" />'.format(obj.image.url))
 
     image_tag.short_description = 'Image'
 
@@ -45,7 +45,7 @@ class MenuItemAdmin(admin.ModelAdmin):
     filter_horizontal = ['tags']
 
     def image_tag(self, obj):
-        return format_html('<img src="{}" style="width:150px" />'.format(obj.image.url))
+        return format_html('<img src="{}" style="width:100px" />'.format(obj.image.url))
 
     def tags_icons(self, obj):
         tags = obj.tags.all()
