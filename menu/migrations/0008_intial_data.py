@@ -37,19 +37,23 @@ def add_initial_data(apps, schema_editor):
     MenuTag.objects.bulk_create([
         MenuTag(
             name='Spicey',
-            icon='fas fa-pepper-hot'
+            icon='fas fa-pepper-hot',
+            color='#ff9b37',
         ),
         MenuTag(
             name='Shareable',
-            icon='fas fa-users'
+            icon='fas fa-users',
+            color='#0000ff'
         ),
         MenuTag(
             name='Healthy',
-            icon='fas fa-heart'
+            icon='fas fa-heart',
+            color='#ff0000',
         ),
         MenuTag(
             name='House Specialty',
-            icon='fas fa-star'
+            icon='fas fa-star',
+            color='#fbfb00',
         )
     ])
 
@@ -118,21 +122,10 @@ def add_initial_data(apps, schema_editor):
     )
     fish_tacos.save()
 
-    fish_tacos = MenuItem(
-        name='Fish Tacos',
-        order=5,
-        image='items/fish-tacos.jpg',
-        active=True,
-        description='Corn tortilla tacos with crispy breaded onion and chiltima fish, served with slices and chipotle sauce',
-        price=18,
-        category=starter_category,
-    )
-    fish_tacos.save()
-
     national_beer = MenuItem(
         name='National Beer',
         order=1,
-        image='items/national-beer.jpg',
+        image='items/national-beer.png',
         active=True,
         price=2.0,
         category=drinks_category,
@@ -277,7 +270,7 @@ def add_initial_data(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('menu', '0006_auto_20191004_1617'),
+        ('menu', '0007_menutag_color'),
     ]
 
     operations = [

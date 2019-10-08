@@ -26,7 +26,7 @@
                 <ul class="list-inline float-right">
                 {% for menu_tag in menu_tags %}
                     <li class="list-inline-item">
-                        {{menu_tag.name}} <i class="{{menu_tag.icon}}"></i>
+                        {{menu_tag.name}} <i class="{{menu_tag.icon}}" style="color:{{menu_tag.color}}"></i>
                     </li>   
                 {% endfor %}
                 </ul>
@@ -51,7 +51,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{menu_item.name}}</h5>
                             {% for tag in menu_item.tags.all %}
-                            <i class="{{tag.icon}}" title="{{tag.name}}"></i>
+                            <i class="{{tag.icon}}" title="{{tag.name}}" style="color:{{tag.color}}"></i>
                             {% endfor %}
                             <p class="card-text">{{menu_item.description | safe}}</p>
                         </div>

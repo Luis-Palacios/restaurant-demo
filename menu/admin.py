@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib import admin
 from django.utils.html import format_html
+from django.forms.widgets import TextInput
 from ckeditor.widgets import CKEditorWidget
 from .models import MenuCategory, MenuItem, MenuTag
 
@@ -10,6 +11,15 @@ class MenuItemAdminForm(forms.ModelForm):
     class Meta:
         model = MenuItem
         fields = '__all__'
+
+
+class MenuTagAdminForm(forms.ModelForm):
+    class Meta:
+        model = MenuTag
+        fields = '__all__'
+        widgets = {
+            'color': TextInput(attrs={'type': 'color'}),
+        }
 
 
 @admin.register(MenuCategory)
@@ -27,9 +37,10 @@ class MenuCategoryAdmin(admin.ModelAdmin):
 @admin.register(MenuTag)
 class MenuTagAdmin(admin.ModelAdmin):
     list_display = ['name', 'icon', 'icon_tag']
+    form = MenuTagAdminForm
 
     def icon_tag(self, obj):
-        return format_html('<i class="{}" />'.format(obj.icon))
+        return format_html('<i class="{}" style="color:{}" />'.format(obj.icon, obj.color))
 
     class Media:
         js = ('https://kit.fontawesome.com/6274f95d8c.js', )
@@ -53,7 +64,7 @@ class MenuItemAdmin(admin.ModelAdmin):
         tags = obj.tags.all()
         icons = ''
         for tag in tags:
-            icons += ' <i class="{}" title="{}"></i>'.format(tag.icon, tag.name)
+            icons += ' <i class="{}" title="{}" style="color:{}"></i>'.format(tag.icon, tag.name, tag.color)
         return format_html(icons)
 
     class Media:

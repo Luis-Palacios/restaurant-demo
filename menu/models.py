@@ -14,7 +14,9 @@ class MenuTag(models.Model):
     name = models.CharField(max_length=200)
     icon = models.CharField(max_length=50,
                             help_text='<a href="https://fontawesome.com/icons?d=gallery&m=free" target="_blank">Check available icons</a>')
+    color = models.CharField(max_length=7)
     active = models.BooleanField(default=True)
+
 
     def __str__(self):
         return self.name
