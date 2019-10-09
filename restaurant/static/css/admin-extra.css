@@ -1,0 +1,21 @@
+#header {
+    background-color: black;
+    color:white;
+}
+
+#branding h1 a:link, #branding h1 a:visited{
+    color: white;
+}
+
+.module caption{
+    background-color: #6d6d6d;
+}
+
+div.breadcrumbs {
+    background-color: #6d6d6d;
+}
+
+
+.module h2 {
+    background-color: #b7b7b7;
+}
