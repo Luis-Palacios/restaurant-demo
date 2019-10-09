@@ -58,7 +58,7 @@ class MenuItemAdmin(admin.ModelAdmin):
     search_fields = ['name', 'category__name', 'tags__name', ]
     list_per_page = 10
     radio_fields = {'category': admin.HORIZONTAL}
-
+    
     def image_tag(self, obj):
         return format_html('<img src="{}" style="width:100px" />'.format(obj.image.url))
 
