@@ -28,6 +28,7 @@ class MenuCategoryAdmin(admin.ModelAdmin):
     list_editable = ['order', ]
     ordering = ['order', ]
     list_filter = ['active']
+    search_fields = ['name', ]
 
     def image_tag(self, obj):
         return format_html('<img src="{}" style="width:85px" />'.format(obj.image.url))
@@ -54,8 +55,9 @@ class MenuItemAdmin(admin.ModelAdmin):
     ordering = ['category__order',  'order', ]
     list_filter = ['active', 'category', 'tags']
     filter_horizontal = ['tags']
-    search_fields = ['name', 'category__name', 'tags__name']
+    search_fields = ['name', 'category__name', 'tags__name', ]
     list_per_page = 10
+    radio_fields = {'category': admin.HORIZONTAL}
 
     def image_tag(self, obj):
         return format_html('<img src="{}" style="width:100px" />'.format(obj.image.url))

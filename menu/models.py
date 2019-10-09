@@ -6,6 +6,9 @@ class MenuCategory(models.Model):
     image = models.ImageField(upload_to='categories/')
     active = models.BooleanField(default=True)
 
+    class Meta:
+        verbose_name_plural = 'Menu Categories'
+
     def __str__(self):
         return self.name
 
