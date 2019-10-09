@@ -53,7 +53,9 @@
                             {% for tag in menu_item.tags.all %}
                             <i class="{{tag.icon}}" title="{{tag.name}}" style="color:{{tag.color}}"></i>
                             {% endfor %}
+                            {% if menu_item.description %}
                             <p class="card-text">{{menu_item.description | safe}}</p>
+                            {% endif %}
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Price: <strong>${{ menu_item.price }}</strong></small>

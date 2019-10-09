@@ -71,19 +71,19 @@ def add_initial_data(apps, schema_editor):
         order=1,
         image='items/shrimp-nachos.jpg',
         active=True,
-        description='Tortilla bathed with a mixture of Monterey cheeses, jack, mozzarella and cheddar, pico de gallo and fresh jalapenos and shrimp',
+        description='<p><span style="color:#f1c40f"><strong>Tortilla</strong></span> bathed with a mixture of Monterey cheeses, jack, mozzarella and cheddar, <strong><span style="color:#e74c3c">pico de gallo</span></strong> and fresh <strong><span style="color:#f39c12">jalapenos</span></strong> and shrimp</p>',
         price=24,
         category=starter_category,
     )
     shrimp_nachos.save()
-    shrimp_nachos.tags.set([shareable_tag])
+    shrimp_nachos.tags.set([shareable_tag, spicey_tag])
 
     hush_puppies = MenuItem(
         name='Hush Puppies',
         order=2,
         image='items/hush-puppies.jpg',
         active=True,
-        description='Fish, shrimp and golden corn croquettes with a touch of cajun, served with tartare sauce',
+        description='<p>Fish, shrimp and <span style="color:#f1c40f"><strong>golden corn</strong></span> croquettes with a touch of cajun, served with tartare sauce</p>',
         price=15.50,
         category=starter_category,
     )
@@ -105,7 +105,7 @@ def add_initial_data(apps, schema_editor):
         order=4,
         image='items/shrimp-tacos.jpg',
         active=True,
-        description='Corn tortilla tacos with sauteed shrimp, onion and chiltoma, served with slices and chipotle sauce',
+        description='<p><span style="color:#f1c40f"><strong>Corn tortilla</strong></span> tacos with sauteed shrimp, onion and <strong><span style="color:#2ecc71">chiltoma</span></strong>, served with slices and chipotle sauce</p>',
         price=19.50,
         category=starter_category,
     )

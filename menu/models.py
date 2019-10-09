@@ -32,7 +32,7 @@ class MenuItem(models.Model):
     category = models.ForeignKey(MenuCategory,
                                  on_delete=models.CASCADE,
                                  limit_choices_to={'active': True},)
-    tags = models.ManyToManyField(MenuTag, limit_choices_to={'active': True})
+    tags = models.ManyToManyField(MenuTag, limit_choices_to={'active': True}, blank=True)
 
     def __str__(self):
         return self.name
